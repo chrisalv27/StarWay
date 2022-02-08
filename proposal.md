@@ -1,11 +1,14 @@
 # StarWay
 
 ## Project Overview
-Starway is a astrology application that solves the problem of information resource for anyone interesting in astrology.  Starway aims to give the user a basic start to understanding their sign as well as their interactions to other signs in the zodiac.  The information can taken to a proffesional reader or shared with peers.  
+Starway is a astrology application that can be used as a source of information for anyone interested in astrology.  Starway aims to give the user a basic start to understanding their sign as well as their interactions to other signs in the zodiac.  The information can taken to a proffesional reader or shared with peers.  The information can also be used as a starting point to someone looking into astrology as a interest, hobby, or career.
 
-As a person, I want to be able to see my zodiac sign because it is a interest to see how my zodiac interacts to other people in my family or circle of friends.
+## Features
+As a user, I want to be able to see my zodiac sign and description because it is a interest to see how it interacts with other people in my family or circle of friends.
 
-As a user, I want to be able to see my birth chart and be able to take it to a proffesional astrologer or medium.
+As a user, I want to be able to see my birth chart and be able to take it to a professional astrologer for a in-depth reading.
+
+
 
 ## Data Models
 - User Birth - Holds user birthdate
@@ -22,9 +25,10 @@ As a user, I want to be able to see my birth chart and be able to take it to a p
 - Display zodiac sign
 - Display compatability with other zodiac signs
 - Display general traits for the users sign
+- Render birth chart image
 
 ## Great to Have
-- Display full birth chart using outside library
+- Dynamic and great looking front-end interface.
 - Display horoscope for the day or some advice using API
 
 ## Nice to Have
