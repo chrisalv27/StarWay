@@ -5,16 +5,18 @@ Starway is a astrology application that can be used as a source of information f
 
 ## Features
 As a user, I want to be able to see my zodiac sign and description because it is a interest to see how it interacts with other people in my family or circle of friends.
+- Create container for user to input name and birthdate.
+- Return their personal zodiac sign
+- Display all 12 Zodiac signs with descriptions in rows for user to view and learn.
 
 As a user, I want to be able to see my birth chart and be able to take it to a professional astrologer for a in-depth reading.
 
 
 
 ## Data Models
-- User Birth - Holds user birthdate
-- User Sign- Saves users sign
-- Compatability - boolean with other zodiac signs
-- Custom User - User login 
+- User - Holds user birthdate and name that user enters
+- Zodiac - Displays zodiac information
+
 
 ## Schedule
 - Week one - Get Django models and views set up to take in user information as well as get API or library working
