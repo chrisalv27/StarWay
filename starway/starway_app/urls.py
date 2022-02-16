@@ -3,5 +3,6 @@ from . import views
 
 app_name = 'starway_app'
 urlpatterns = [
-    path('', views.myview, name='myview')
+    path('', views.myview, name='myview'),
+    path('index', views.index, name='index')
 ]

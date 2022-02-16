@@ -1,0 +1,22 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'starway_app/starway.css' %}">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Starway</title>
+</head>
+<body>
+    <div class="container" >
+        {% for sign in zodiac %}
+        
+        <div class="item">{{sign}}</div> 
+        
+        {% endfor %}
+    </div>
+    
+</body>
+</html>
