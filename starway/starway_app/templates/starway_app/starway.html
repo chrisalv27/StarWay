@@ -2,23 +2,49 @@
 <link rel="stylesheet" type="text/css" href="{% static 'starway_app/starway.css' %}">
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
     <title>Starway</title>
 </head>
+
 <body>
-<div class="flip-card">
-    <div class="container" >
+    <div class="container">
+        <h2>Starway</h2>
+<form action="" method="POST">
+	{% csrf_token %}
+	<p>Enter your birthdate</p>
+	<input type="date" name="birth">
+    <button type="submit">submit</button>
+</form>
+
         {% for sign in zodiac %}
-        
-        <div class="item">{{sign}}</div> 
-        
+        <div class="item">
+            <div class="card__inner">
+                <div class="card__inner">
+                    <div class="card__front">
+                        {{sign}}
+                        {{sign.element}}
+                        {{sign.planet}}
+                        {{sign.description}}
+                        
+                    </div>
+                    <div class="card__back">
+                        <p>hello</p>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
         {% endfor %}
+
     </div>
-    
-</div>
+
+
 </body>
+
 </html>

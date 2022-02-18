@@ -1,12 +1,31 @@
 .container {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: space-evenly;
 }
   
 .item {
+    text-align: center;
     flex: 0 32%;
-    height: 100px;
+    height: 200px;
     margin-bottom: 2%;
     border: solid black
   }
+  .card,
+  .card__inner {
+   width: 300px;
+   height: 320px;
+  }
+  
+  .card__front,
+  .card__back  {
+    display: flex;
+  
+    color: #888;
+    background-color: #fff; 
+  
+    justify-content: center;
+    align-items: center;
+  }
+
+  

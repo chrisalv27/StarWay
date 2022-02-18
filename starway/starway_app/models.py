@@ -3,7 +3,7 @@ from django.db import models
 class User(models.Model):
     name = models.CharField(max_length=20)
     birth = models.DateField(max_length=10)
-
+    zodiac = models.ForeignKey('Zodiac', on_delete=models.PROTECT, null=True, blank=True)
 
 class Zodiac(models.Model):
     name = models.CharField(max_length=25)
