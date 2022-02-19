@@ -1,7 +1,10 @@
+/* body {background-color: blue;}
+
 .container {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
+    background-color: blueviolet;
 }
   
 .item {
@@ -9,23 +12,24 @@
     flex: 0 32%;
     height: 200px;
     margin-bottom: 2%;
-    border: solid black
-  }
-  .card,
-  .card__inner {
+    border: solid red;
+     
+}
+.item,
+.card__inner {
    width: 300px;
    height: 320px;
-  }
+   
+}
   
-  .card__front,
-  .card__back  {
+.card__front,
+.card__back  {
     display: flex;
   
-    color: #888;
+    color: red;
     background-color: #fff; 
   
     justify-content: center;
     align-items: center;
-  }
-
-  
+}
+  */

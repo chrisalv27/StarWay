@@ -1,12 +1,16 @@
 {% load static %}
-<link rel="stylesheet" type="text/css" href="{% static 'starway_app/starway.css' %}">
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
+    
+    <link rel="stylesheet/less" type="text/less" href="{% static 'starway_app/starway.less' %}" /> 
+    
+    <script src="https://cdn.jsdelivr.net/npm/less@4"></script> 
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% comment %} <link rel="stylesheet" type="text/css" href="{% static 'starway_app/starway.css' %}"> {% endcomment %}
 
     <title>Starway</title>
 </head>
@@ -14,27 +18,30 @@
 <body>
     <div class="container">
         <h2>Starway</h2>
-<form action="" method="POST">
-	{% csrf_token %}
-	<p>Enter your birthdate</p>
-	<input type="date" name="birth">
-    <button type="submit">submit</button>
-</form>
+        <form action="{% url 'starway_app:getsign' %}" method="POST">
+            {% csrf_token %}
+            <p>Enter your birthdate</p>
+            <input type="date" name="birth">
+            <button type="submit">submit</button>
+        </form>
 
         {% for sign in zodiac %}
         <div class="item">
             <div class="card__inner">
                 <div class="card__inner">
                     <div class="card__front">
-                        {{sign}}
-                        {{sign.element}}
-                        {{sign.planet}}
-                        {{sign.description}}
-                        
+                        {{sign.name}}
+                        <li>{{sign.element}}</li>
+                        <li>{{sign.planet}}</li>
+
                     </div>
                     <div class="card__back">
-                        <p>hello</p>
+                        {{sign.description}}
+
+
                     </div>
+
+
 
 
                 </div>
