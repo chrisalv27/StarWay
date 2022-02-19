@@ -5,34 +5,9 @@
     background-color: aquamarine;
 }
   
- .item {
-    text-align: center;
-    flex: 0 32%;
-    height: 200px;
-    margin-bottom: 2%;
-    border: solid black;
-     
- }
- .item,
- .card__inner {
-    position: relative;
-   width: 300px;
-   height: 320px;
-   
- }
-  
- .card__front,
- .card__back  {
-    display: flex;
-  
-    color: #888;
-    background-color: #fff; 
-  
-    justify-content: center;
-    align-items: center;
- }
-
- .item {
+.card {
+    padding: 1rem;
+    perspective: 1000px;
     &:hover,
     &:active,
     &:focus {
@@ -41,23 +16,28 @@
       }
     }
   }
- .card__inner {
+  
+  .card,
+  .card__inner {
+    position: relative; 
+  
+    width: 300px;
+    height: 320px;
+  }
+  
+  .card__inner {
     transition: transform .25s ease-in-out;
+  
+    transform-origin: 50% 50%;
+    transform-style: preserve-3d;
   }
   
- .card__front,
-  .card__back  {
-    display: flex;
-  
-    color: #888;
-    background-color: #fff; 
-  
-    justify-content: center;
-    align-items: center;
+  .card__back {
+    transform: rotateY(180deg);
   }
-
+  
   .card__front,
-  .card__back  {
+  .card__back {
     position: absolute;
     top: 0;
     left: 0;
@@ -68,9 +48,9 @@
     height: 100%;
   
     color: #888;
-    background-color: #fff; 
+    background-color: #fff;
   
     justify-content: center;
     align-items: center;
+    backface-visibility: hidden;
   }
- 

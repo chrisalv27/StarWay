@@ -16,34 +16,27 @@
 </head>
 
 <body>
+    <h2>Starway</h2>
+    <form action="{% url 'starway_app:getsign' %}" method="POST">
+        {% csrf_token %}
+        <p>Enter your birthdate</p>
+        <input type="date" name="birth">
+        <button type="submit">submit</button>
+    </form>
+    
     <div class="container">
-        <h2>Starway</h2>
-        <form action="{% url 'starway_app:getsign' %}" method="POST">
-            {% csrf_token %}
-            <p>Enter your birthdate</p>
-            <input type="date" name="birth">
-            <button type="submit">submit</button>
-        </form>
-
         {% for sign in zodiac %}
-        <div class="item">
+        <div class="card">
             <div class="card__inner">
-                <div class="card__inner">
-                    <div class="card__front">
-                        {{sign.name}}
-                        <li>{{sign.element}}</li>
-                        <li>{{sign.planet}}</li>
+                <div class="card__front">
+                    {{sign.name}}
+                    <li>{{sign.element}}</li>
+                    <li>{{sign.planet}}</li>
 
-                    </div>
-                    <div class="card__back">
-                        {{sign.description}}
-
-
-                    </div>
-
-
-
-
+                </div>
+                <div class="card__back">
+                    {{sign.description}}
+                    <p>helloo</p>
                 </div>
             </div>
         </div>
@@ -55,3 +48,11 @@
 </body>
 
 </html>
+                
+
+
+
+
+
+
+                
