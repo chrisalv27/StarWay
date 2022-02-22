@@ -6,6 +6,7 @@
 }
   
 .card {
+    border-color: solid black;
     padding: 1rem;
     perspective: 1000px;
     &:hover,
@@ -53,4 +54,13 @@
     justify-content: center;
     align-items: center;
     backface-visibility: hidden;
+  }
+
+//   space card image
+
+  .image {
+    width: 50%;
+    height: 50%;
+     
+    clip-path: polygon(0 0, 100% 0, 100% 42%, 0 23%);
   }
