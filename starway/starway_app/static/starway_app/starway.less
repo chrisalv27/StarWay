@@ -1,13 +1,20 @@
+.topcontainer {
+  
+  justify-content: center;
+}
+
 .container {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
-    background-color: aquamarine;
+    background-color: black;
 }
   
 .card {
-    border-color: solid black;
-    padding: 1rem;
+    margin-left: 28vw;
+    border-radius: 25px;
+    // border:solid black;  
+    padding: 5rem;
     perspective: 1000px;
     &:hover,
     &:active,
@@ -27,6 +34,7 @@
   }
   
   .card__inner {
+    
     transition: transform .25s ease-in-out;
   
     transform-origin: 50% 50%;
@@ -34,11 +42,31 @@
   }
   
   .card__back {
+    display: flex;
+    // flex-direction: row;
+    flex-wrap: wrap;
+    font-size: 15px;
+    text-decoration-color: white;
+    text-align: justify;
     transform: rotateY(180deg);
+  }
+  .card__front {
+    font-size: 10px;
+    text-align: center;
+    
+    
   }
   
   .card__front,
   .card__back {
+    
+    background-size: 59rem;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url(https://img.freepik.com/free-vector/crystal-ball-with-one-glowing-eye-held-by-two-hands-tarot-card-decorated-with-golden-clouds-moon-circulation-outer-space-many-stars_100410-79.jpg);
+    border-radius: 25px;
+    
+    border: solid black;
     position: absolute;
     top: 0;
     left: 0;
@@ -46,21 +74,90 @@
     display: flex;
   
     width: 100%;
-    height: 100%;
+    height: 120%;
   
     color: #888;
-    background-color: #fff;
-  
+    
     justify-content: center;
-    align-items: center;
+    align-items:center;
+
     backface-visibility: hidden;
   }
 
-//   space card image
 
-  .image {
-    width: 50%;
-    height: 50%;
-     
-    clip-path: polygon(0 0, 100% 0, 100% 42%, 0 23%);
-  }
+
+// ######header####
+
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,700);
+
+:root {
+	/* Base font size */
+	font-size: 10px;
+
+	/* Heading height variable*/
+	--heading-height: 40em;
+}
+
+body {
+	font-family: "Roboto", Arial, sans-serif;
+	min-height: 100vh;
+	background-color: #101010;
+}
+
+header {
+	position: fixed;
+	width: 100%;
+	height: var(--heading-height);
+}
+
+/* Create angled background with 'before' pseudo-element */
+header::before {
+	content: "";
+	display: block;
+	position: absolute;
+	left: -7px;
+	bottom: 6em;
+	width: 100%;
+	height: calc(var(--heading-height) + 10em);
+	z-index: -1;
+	transform: skewY(-3.5deg);
+	background: 
+		linear-gradient(rgba(0,0,0,.6), rgba(0,0,0,.6)),
+		url(https://images.unsplash.com/photo-1495464101292-552d0b52fe41?auto=format&fit=crop&w=1350&q=80) no-repeat center,
+		linear-gradient(#4e4376, #2b5876);
+	background-size: cover;
+	border-bottom: .2em solid #fff;
+}
+
+h1 {
+	font-size: calc(2.8em + 2.6vw);
+	font-weight: 700;
+	letter-spacing: .01em;
+	padding: 10rem 0 0 4.5rem;
+	text-shadow: .022em .022em .022em #111;
+	color: #fff;
+}
+
+main {
+	padding: calc(var(--heading-height) + 1.5vw) 4em 0;
+}
+
+p {
+	font-size: calc(2em + .25vw);
+	font-weight: 400;
+	line-height: 2;
+	margin-bottom: 1.5em;
+	color: #fcfcfc;
+}
+
+
+// #######EYE Picture########
+
+.eye {
+  height: 20rem;
+  width: 20rem;
+  border-radius: 25px;
+    border: solid black;
+
+}
+

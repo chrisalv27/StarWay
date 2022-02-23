@@ -15,36 +15,56 @@
     <title>Starway</title>
 </head>
 
+
+
+
+
 <body>
-    <h2>Starway</h2>
-    <form action="{% url 'starway_app:getsign' %}" method="POST">
-        {% csrf_token %}
-        <p>Enter your birthdate</p>
-        <input type="date" name="birth">
-        <button type="submit">submit</button>
-    </form>
+    <header>
+        <h1>Starway</h1>
+        <form action="{% url 'starway_app:getsign' %}" method="POST">
+                {% csrf_token %}
+                <p>Enter your birthdate</p>
+                <input type="date" name="birth">
+                <button type="submit">submit</button>
+        </form> 
+    </header>
+
+
+
+
+        
+        
+        
     
-    <div class="container">
-        {% for sign in zodiac %}
-        <div class="card">
-            <div class="card__inner">
-                <div class="card__front">
-                    {% comment %} <img src="https://media.istockphoto.com/photos/outer-space-universe-nebula-stars-star-cluster-blue-purple-pink-picture-id1173422519?b=1&k=20&m=1173422519&s=170667a&w=0&h=gTJJ83auXIPVBFG7TTRAz7ctAyoMCZPY96CRKMDzDsk="alt="Avatar" class='image'> {% endcomment %}
-                    <h1>{{sign.name}}</h1
-                    <li>{{sign.element}}</li>
-                    <li>{{sign.planet}}</li> 
+  <main>
+      <div class="container">
+          {% for sign in zodiac %}
+          <div class="card">
+              <div class="card__inner">
+                  <div class="card__front">
+                      {% comment %} <img class="eye" src="{% static 'starway_app/images/othereye.jpg' %}" alt="My image"/>" {% endcomment %}
+                      <h1>{{sign.name}}</h1>
+                      
+                    </div>
+                    <div class="card__back">
+                        {% comment %} <div class="cardtop"></div> {% endcomment %}
+                        <div>{{sign.description}}</div>
+                        <hr>
+                        <div>{{sign.element}}</div>
+                        <hr>
+                        <div>{{sign.planet}}</div> 
+                        <hr>
+                    </div>
+              </div>
+          </div>
+          {% endfor %}
+    
+      </div>
 
-                </div>
-                <div class="card__back">
-                    {{sign.description}}
-                    
-                </div>
-            </div>
-        </div>
-        {% endfor %}
+  </main>
 
-    </div>
-
+ 
 
 </body>
 
