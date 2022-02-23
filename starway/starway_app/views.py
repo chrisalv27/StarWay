@@ -91,20 +91,13 @@ def getsign(request):
 
 def index(request):
     context = {
-        'zodiac': Zodiac.objects.all()
+        'zodiac': Zodiac.objects.all(),
+        
         }
+    
     return render(request, 'starway_app/starway.html', context)
 
-# def year():
-#     user = datetime.birth('birth')
-#     replace = user.replace(year=2022)
 
-# this is a helper function, it would be called in entry or whatever function needs it
-# def check_dates(zodiac_start, zodiac_end, user_bday_2022):
-#     """Takes in the starting date and ending date of a zodiac range,
-#     as well as the user's 2022 birthday and returns True if the 2022
-#     birthday falls in the range of those dates"""
-#     ...
 
 
 

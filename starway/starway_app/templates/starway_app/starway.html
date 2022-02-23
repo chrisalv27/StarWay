@@ -51,6 +51,11 @@
                         {% comment %} <div class="cardtop"></div> {% endcomment %}
                         <div>{{sign.description}}</div>
                         <hr>
+                        <div>{% for match in sign.matches.all %}
+                            {{match}}
+                            {% endfor %}
+                        </div>
+                        <hr>
                         <div>{{sign.element}}</div>
                         <hr>
                         <div>{{sign.planet}}</div> 
