@@ -12,9 +12,9 @@ class User(models.Model):
 class Zodiac(models.Model):
     name = models.CharField(max_length=25)
     matches = models.ManyToManyField('Zodiac', blank=True)
-    element = models.CharField(max_length=10)
+    element = models.CharField(max_length=50)
     description = models.CharField(max_length=550)
-    planet = models.CharField(max_length=10,null=True)
+    planet = models.CharField(max_length=50,null=True)
     start_date = models.DateField(max_length=8, null=True)
     end_date = models.DateField(max_length=8, null=True)
     
