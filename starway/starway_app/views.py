@@ -2,6 +2,7 @@ from datetime import datetime
 from xmlrpc.client import DateTime
 from django.shortcuts import render
 from .models import Zodiac, User
+from django.http import HttpResponseRedirect
 
 
 
@@ -86,7 +87,7 @@ def getsign(request):
         user.save() # this actually writes the changes to the database
                 
         
-        return render(request, 'starway_app/starway.html')
+        return HttpResponseRedirect('/')
     
 
 def index(request):

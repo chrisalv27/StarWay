@@ -19,15 +19,16 @@
 
 
 
-<body>
+<body id='app'>
     <header>
         <h1>Starway</h1>
-        <form action="{% url 'starway_app:getsign' %}" method="POST">
-                {% csrf_token %}
+        {% comment %} <form action="{% url 'starway_app:getsign' %}" method="POST">
+                {% csrf_token %} {% endcomment %}
                 <p>Enter your birthdate</p>
-                <input type="date" name="birth">
-                <button type="submit">submit</button>
-        </form> 
+                <input id='calender' type="date" name="birth">
+                <button v-on:click="getzodiac()" type="submit">submit</button>
+
+        {% comment %} </form>  {% endcomment %}
     </header>
 
 
@@ -52,7 +53,7 @@
                         <div>{{sign.description}}</div>
                         <hr>
                         <div>{% for match in sign.matches.all %}
-                           <h3>Matches:</h3> {{match}}
+                            {{match}}
                             {% endfor %}
                         </div>
                         <hr>
@@ -68,8 +69,27 @@
       </div>
 
   </main>
+  <script src="https://unpkg.com/vue@next"></script>
 
- 
+ <script>
+     const App= {
+         delimiters: ['[[',']]'],
+
+         data(){
+             return {
+
+             }
+         },
+         methods: {
+             getzodiac() {
+                 console.log('hellooo!!!!')
+                 let calender= document.getElementById('calender').value
+                 console.log(calender)
+             }
+         }
+     }
+     Vue.createApp(App).mount('#app')
+ </script>
 
 </body>
 
