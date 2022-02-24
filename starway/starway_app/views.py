@@ -1,8 +1,9 @@
 from datetime import datetime
 from xmlrpc.client import DateTime
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Zodiac, User
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, JsonResponse
+import json
 
 
 
@@ -12,17 +13,23 @@ from django.http import HttpResponse
 
 def getsign(request):
     if request.method == 'POST':
-        birth = request.POST.get('birth')
-        # name = request.POST.get('name')
+        data = json.loads(request.body)
+        print(data)
+        
+        birth = data.get('userBirthday')
+        print(birth)
+        
         user = User.objects.create(birth=birth, name='bob')
         
         temp_date = user.birth
         temp_year = '2022-'
         for i in range(5,10):
             temp_year += temp_date[i]
-        
+        #convert to JS
+        #
         day = user.birth[8] + user.birth[9] #using indices of the day colum, concatinate them into day ex. "07"
         day = int(day) #typecast day string into an integer, to compare it with greater than or less than
+
         if user.birth[5] == "0" and user.birth[6] == "1":
                 if day < 20:
                     user.zodiac = Zodiac.objects.get(name='Capricorn')
@@ -85,9 +92,15 @@ def getsign(request):
                     user.zodiac = Zodiac.objects.get(name='Capricorn')
                     
         user.save() # this actually writes the changes to the database
-                
+        print(user.zodiac)
+        zodiac = {
+            'name': user.zodiac.name,
+            'element': user.zodiac.element,
+            'description': user.zodiac.description
+        }
+        data = {'zodiac': zodiac}
         
-        return HttpResponseRedirect('/')
+        return JsonResponse(data)
     
 
 def index(request):

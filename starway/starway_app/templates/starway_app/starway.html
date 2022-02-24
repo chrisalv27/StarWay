@@ -4,14 +4,19 @@
 
 <head>
     
-    <link rel="stylesheet/less" type="text/less" href="{% static 'starway_app/starway.less' %}" /> 
     
-    <script src="https://cdn.jsdelivr.net/npm/less@4"></script> 
+    <link
+    rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link rel="stylesheet/less" type="text/less" href="{% static 'starway_app/starway.less' %}" />
+
+    <script src="https://cdn.jsdelivr.net/npm/less@4"></script>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    {% comment %} <link rel="stylesheet" type="text/css" href="{% static 'starway_app/starway.css' %}"> {% endcomment %}
-
+    {% comment %}
+    <link rel="stylesheet" type="text/css" href="{% static 'starway_app/starway.css' %}"> {% endcomment %}
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <title>Starway</title>
 </head>
 
@@ -19,86 +24,104 @@
 
 
 
-<body id='app'>
-    <header>
-        <h1>Starway</h1>
-        {% comment %} <form action="{% url 'starway_app:getsign' %}" method="POST">
+<body>
+    <div id='app'>
+        {% csrf_token %}
+        <header>
+            <h1>Starway</h1>
+            
+            <div class="animate__animated animate__bounce user">[[zodiacSign]]</div>
+            {% comment %} <form action="{% url 'starway_app:getsign' %}" method="POST">
                 {% csrf_token %} {% endcomment %}
                 <p>Enter your birthdate</p>
-                <input id='calender' type="date" name="birth">
-                <button v-on:click="getzodiac()" type="submit">submit</button>
+                <input id='calender' type="date" name="birth" v-model='userBirthday'>
+                <button v-on:click="getzodiac" type="submit">submit</button>
 
-        {% comment %} </form>  {% endcomment %}
-    </header>
+                {% comment %}
+            </form> {% endcomment %}
+        </header>
 
 
 
 
-        
-        
-        
-    
-  <main>
-      <div class="container">
-          {% for sign in zodiac %}
-          <div class="card">
-              <div class="card__inner">
-                  <div class="card__front">
-                      {% comment %} <img class="eye" src="{% static 'starway_app/images/othereye.jpg' %}" alt="My image"/>" {% endcomment %}
-                      <h1>{{sign.name}}</h1>
-                      
-                    </div>
-                    <div class="card__back">
-                        {% comment %} <div class="cardtop"></div> {% endcomment %}
-                        <div>{{sign.description}}</div>
-                        <hr>
-                        <div>{% for match in sign.matches.all %}
-                            {{match}}
-                            {% endfor %}
+
+
+
+
+        <main>
+            <div class="container">
+                {% for sign in zodiac %}
+                <div class="card">
+                    <div class="card__inner">
+                        <div class="card__front">
+                            {% comment %} <img class="eye" src="{% static 'starway_app/images/othereye.jpg' %}"
+                                alt="My image" />" {% endcomment %}
+                            <h1>{{sign.name}}</h1>
+
                         </div>
-                        <hr>
-                        <div>{{sign.element}}</div>
-                        <hr>
-                        <div>{{sign.planet}}</div> 
-                        <hr>
+                        <div class="card__back">
+                            {% comment %} <div class="cardtop"></div> {% endcomment %}
+                            <div>{{sign.description}}</div>
+                            <hr>
+                            <div>{% for match in sign.matches.all %}
+                                {{match}}
+                                {% endfor %}
+                            </div>
+                            <hr>
+                            <div>{{sign.element}}</div>
+                            <hr>
+                            <div>{{sign.planet}}</div>
+                            <hr>
+                        </div>
                     </div>
-              </div>
-          </div>
-          {% endfor %}
-    
-      </div>
+                </div>
+                {% endfor %}
 
-  </main>
-  <script src="https://unpkg.com/vue@next"></script>
+            </div>
 
- <script>
-     const App= {
-         delimiters: ['[[',']]'],
+        </main>
+    </div>
 
-         data(){
-             return {
+    <script>
+        const App = {
+            delimiters: ['[[', ']]'],
 
-             }
-         },
-         methods: {
-             getzodiac() {
-                 console.log('hellooo!!!!')
-                 let calender= document.getElementById('calender').value
-                 console.log(calender)
-             }
-         }
-     }
-     Vue.createApp(App).mount('#app')
- </script>
+            data() {
+                return {
+                    userBirthday: '',
+                    btnClick: '',
+                    zodiacSign: '',
+                    csrf_token: ''
+
+                }
+            },
+            mounted() {
+                this.csrf_token = document.querySelector('input[name="csrfmiddlewaretoken"]').value
+            },
+            methods: {
+                getzodiac() {
+                    axios({
+                        method: 'post',
+                        url: '/getsign/',
+                        data: {userBirthday:this.userBirthday},
+                        headers: { 'X-CSRFToken': this.csrf_token }
+                    })
+                    .then(res => {
+                        console.log(res.data)
+                        this.zodiacSign = res.data.zodiac.name
+                    })
+                }
+            }
+        }
+        Vue.createApp(App).mount('#app')
+    </script>
 
 </body>
+<footer class="bg-near-black white-80 pv5 pv6-l ph4">
+    <p class="f6"><span class="dib mr4 mr5-ns">©42069 Starway, Inc.</span>
+      
+      <a class="link white-80 hover-green" href="#">chrisalv27@yahoo.com </a>
+    </p>
+  </footer>
 
 </html>
-                
-
-
-
-
-
-
-                
