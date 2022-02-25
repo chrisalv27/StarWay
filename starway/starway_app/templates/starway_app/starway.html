@@ -28,12 +28,12 @@
     <div id='app'>
         {% csrf_token %}
         <header>
-            <h1>Starway</h1>
+            <h1 class="starway">Starway</h1>
             
-            <div class="animate__animated animate__bounce user">[[zodiacSign]]</div>
+            <div class="user">[[zodiacSign]]</div>
             {% comment %} <form action="{% url 'starway_app:getsign' %}" method="POST">
                 {% csrf_token %} {% endcomment %}
-                <p>Enter your birthdate</p>
+                <p class="birthdate">Enter your birthdate</p>
                 <input id='calender' type="date" name="birth" v-model='userBirthday'>
                 <button v-on:click="getzodiac" type="submit">submit</button>
 
