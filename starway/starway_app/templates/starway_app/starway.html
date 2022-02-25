@@ -63,6 +63,7 @@
                             {% comment %} <div class="cardtop"></div> {% endcomment %}
                             <div>{{sign.description}}</div>
                             <hr>
+                            <h4>Macthes:</h4>
                             <div>{% for match in sign.matches.all %}
                                 {{match}}
                                 {% endfor %}
